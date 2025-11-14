@@ -1,7 +1,7 @@
 # Sistema de Encriptación con Patrón Bridge y Factory
 
 ## 📋 Descripción
-Implementación de un sistema de encriptación empresarial que utiliza el patrón Bridge para desacoplar los algoritmos de cifrado del cliente, combinado con un Factory Method configurable que permite cambiar dinámicamente entre diferentes métodos de encriptación mediante archivos de propiedades.
+Implementación de un sistema de encriptación que utiliza el patrón Bridge para desacoplar los algoritmos de cifrado del cliente, combinado con un Factory Method configurable que permite cambiar dinámicamente entre diferentes métodos de encriptación mediante archivos de propiedades.
 
 ## 🎯 Objetivo
 Permitir que una aplicación se comunique con diferentes sistemas que requieren distintos métodos de cifrado, manteniendo la confidencialidad de la información y proporcionando versatilidad para cambios futuros sin modificar el código fuente.

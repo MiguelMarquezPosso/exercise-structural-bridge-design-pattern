@@ -109,13 +109,15 @@ algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
 
 ## 🔐 Flujo de Ejecución
 
-1. Cliente solicita agregar canción a lista
-   
-2. FabricaCanciones verifica si canción existe en cache
-   
-3. SI existe: ♻️ Reutiliza objeto existente
-   
-4. NO existe: 🆕 Crea nuevo objeto y almacena en cache
-   
-5. Lista almacena referencia a canción compartida
+1. Cliente solicita encriptación al Factory
+
+2. Factory lee configuración del archivo .properties
+
+3. Factory crea implementación específica (AES/DES/None)
+
+4. Factory construye Bridge con la implementación
+
+5. Bridge delega encriptación a la implementación concreta
+
+6. Cliente recibe mensaje encriptado sin conocer el algoritmo
 

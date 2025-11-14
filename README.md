@@ -7,6 +7,7 @@ Implementación de un sistema de encriptación empresarial que utiliza el patró
 Permitir que una aplicación se comunique con diferentes sistemas que requieren distintos métodos de cifrado, manteniendo la confidencialidad de la información y proporcionando versatilidad para cambios futuros sin modificar el código fuente.
 
 ## 🏗️ Patrones Implementados
+
 ### 🔗 Patrón Bridge
 Interfaz: InterfaceEncriptar
 
@@ -47,6 +48,7 @@ ParcialBridge/
 ```
 
 ## ⚙️ Configuración
+
 ### 🔧 Archivo de Configuración
 src/propiedades/BridgeConfig.properties:
 
@@ -59,9 +61,11 @@ algoritmoEncriptacion=encriptacion.ProcesoEncriptarAES
 ```
 
 ## 🐳 Ejecución con Docker
+```
 docker build -t parcialbridge .
 
 docker run parcialbridge
+```
 
 ## 🎮 Uso
 El sistema automáticamente ejecuta pruebas que demuestran:
@@ -105,15 +109,13 @@ algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
 
 ## 🔐 Flujo de Ejecución
 
-1. Cliente solicita encriptación al Factory
-
-2. Factory lee configuración del archivo .properties
-
-3. Factory crea implementación específica (AES/DES/None)
-
-4. Factory construye Bridge con la implementación
-
-5. Bridge delega encriptación a la implementación concreta
-
-6. Cliente recibe mensaje encriptado sin conocer el algoritmo
+1. Cliente solicita agregar canción a lista
+   
+2. FabricaCanciones verifica si canción existe en cache
+   
+3. SI existe: ♻️ Reutiliza objeto existente
+   
+4. NO existe: 🆕 Crea nuevo objeto y almacena en cache
+   
+5. Lista almacena referencia a canción compartida
 

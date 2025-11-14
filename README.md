@@ -17,7 +17,7 @@ Fábrica: BridgeFactory
 Configuración: Archivo .properties
 
 ## 📁 Estructura del Proyecto
-
+```
 ParcialBridge/
 ├── src/
 │   ├── bridge/
@@ -38,6 +38,7 @@ ParcialBridge/
 │       └── UtilidadesAcceso.java          # Utilidades para propiedades
 ├── dockerfile                             # Configuración Docker
 └── README.md
+```
 
 ## ⚙️ Configuración
 ### 🔧 Archivo de Configuración
@@ -45,11 +46,14 @@ src/propiedades/BridgeConfig.properties:
 
 ### Configuración del algoritmo de encriptación
 algoritmoEncriptacion=encriptacion.ProcesoEncriptarAES
-#algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
-#algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
+
+algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
+
+algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
 
 ### 🐳 Ejecución con Docker
 docker build -t parcialbridge .
+
 docker run parcialbridge
 
 ## 🎮 Uso

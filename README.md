@@ -9,12 +9,15 @@ Permitir que una aplicación se comunique con diferentes sistemas que requieren 
 ## 🏗️ Patrones Implementados
 ### 🔗 Patrón Bridge
 Abstracción: InterfaceMensajeEncriptacion
+
 Implementación: InterfaceEncriptar
+
 Puente: PuenteMensajeEncriptacion
 
 ### 🏭 Factory Method
 Fábrica: BridgeFactory
-Configuración: Archivo .properties
+
+Configuración: BridgeConfig.properties
 
 ## 📁 Estructura del Proyecto
 ```

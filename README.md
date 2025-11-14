@@ -1,24 +1,22 @@
-🏗️ Sistema de Encriptación con Patrón Bridge y Factory Method
-📋 Descripción
+# Sistema de Encriptación con Patrón Bridge y Factory
+
+## 📋 Descripción
 Implementación de un sistema de encriptación empresarial que utiliza el patrón Bridge para desacoplar los algoritmos de cifrado del cliente, combinado con un Factory Method configurable que permite cambiar dinámicamente entre diferentes métodos de encriptación mediante archivos de propiedades.
 
-🎯 Objetivo
+## 🎯 Objetivo
 Permitir que una aplicación se comunique con diferentes sistemas que requieren distintos métodos de cifrado, manteniendo la confidencialidad de la información y proporcionando versatilidad para cambios futuros sin modificar el código fuente.
 
-🏗️ Patrones Implementados
-🔗 Patrón Bridge
+## 🏗️ Patrones Implementados
+### 🔗 Patrón Bridge
 Abstracción: InterfaceMensajeEncriptacion
-
 Implementación: InterfaceEncriptar
-
 Puente: PuenteMensajeEncriptacion
 
-🏭 Factory Method
+### 🏭 Factory Method
 Fábrica: BridgeFactory
-
 Configuración: Archivo .properties
 
-📁 Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ParcialBridge/
 ├── src/
@@ -41,23 +39,20 @@ ParcialBridge/
 ├── dockerfile                             # Configuración Docker
 └── README.md
 
-⚙️ Configuración
-🔧 Archivo de Configuración
+## ⚙️ Configuración
+### 🔧 Archivo de Configuración
 src/propiedades/BridgeConfig.properties:
 
-# Configuración del algoritmo de encriptación
+### Configuración del algoritmo de encriptación
 algoritmoEncriptacion=encriptacion.ProcesoEncriptarAES
 #algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
 #algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
 
-🐳 Ejecución con Docker
-# Construir la imagen
+### 🐳 Ejecución con Docker
 docker build -t parcialbridge .
-
-# Ejecutar el contenedor
 docker run parcialbridge
 
-🎮 Uso
+## 🎮 Uso
 El sistema automáticamente:
 
 ✅ Lee la configuración del archivo .properties
@@ -68,8 +63,6 @@ El sistema automáticamente:
 
 ✅ Encripta el mensaje usando el método configurado
 
-🔄 Cambio de Algoritmo
+## 🔄 Cambio de Algoritmo
 Para cambiar el algoritmo de encriptación, simplemente edita el archivo BridgeConfig.properties y modifica la línea:
-
 algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
-

@@ -39,8 +39,7 @@ ParcialBridge/
 │   │   └── BridgeConfig.properties        # Configuración
 │   └── utilidades/
 │       └── UtilidadesAcceso.java          # Utilidades para propiedades
-├── dockerfile                             # Configuración Docker
-└── README.md
+└── dockerfile                             # Configuración Docker
 ```
 
 ## ⚙️ Configuración

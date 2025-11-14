@@ -1,16 +1,18 @@
 # Sistema de Encriptación con Patrón Bridge y Factory
 
 ## 📋 Descripción
-Implementación de un sistema de encriptación que utiliza el patrón Bridge para desacoplar los algoritmos de cifrado del cliente, combinado con un Factory Method configurable que permite cambiar dinámicamente entre diferentes métodos de encriptación mediante archivos de propiedades.
+Implementación de un sistema de encriptación empresarial que utiliza el patrón Bridge para desacoplar los algoritmos de cifrado del cliente, combinado con un Factory Method configurable que permite cambiar dinámicamente entre diferentes métodos de encriptación mediante archivos de propiedades.
 
 ## 🎯 Objetivo
 Permitir que una aplicación se comunique con diferentes sistemas que requieren distintos métodos de cifrado, manteniendo la confidencialidad de la información y proporcionando versatilidad para cambios futuros sin modificar el código fuente.
 
 ## 🏗️ Patrones Implementados
 ### 🔗 Patrón Bridge
+Interfaz: InterfaceEncriptar
+
 Abstracción: InterfaceMensajeEncriptacion
 
-Implementación: InterfaceEncriptar
+Implementaciones: ProcesoEncriptarAES, ProcesoEncriptarDES, ProcesoSinEncriptar
 
 Puente: PuenteMensajeEncriptacion
 
@@ -18,6 +20,8 @@ Puente: PuenteMensajeEncriptacion
 Fábrica: BridgeFactory
 
 Configuración: BridgeConfig.properties
+
+Selección: Algoritmo definido en configuración
 
 ## 📁 Estructura del Proyecto
 ```
@@ -46,29 +50,68 @@ ParcialBridge/
 ### 🔧 Archivo de Configuración
 src/propiedades/BridgeConfig.properties:
 
-### Configuración del algoritmo de encriptación
+```
 algoritmoEncriptacion=encriptacion.ProcesoEncriptarAES
 
-algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
+#algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
 
-algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
+#algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
+```
 
-### 🐳 Ejecución con Docker
+## 🐳 Ejecución con Docker
 docker build -t parcialbridge .
 
 docker run parcialbridge
 
 ## 🎮 Uso
-El sistema automáticamente:
+El sistema automáticamente ejecuta pruebas que demuestran:
 
-✅ Lee la configuración del archivo .properties
+### Bridge con AES
+```
+https://chat.deepseek.com/a/chat/s/ffa94288-7b53-43b2-b622-a2f285005ba6#:~:text=InterfaceMensajeEncriptacion%20bridge%20%3D%20BridgeFactory.createBridge()%3B%0AString%20mensaje%20%3D%20bridge.EncryptarMensaje(%22mensaje%22%2C%20%22clave%22)%3B%0A//%20Resultado%3A%20Mensaje%20encriptado%20con%20AES
+```
 
-✅ Crea el algoritmo de encriptación especificado
+### Bridge con DES
+```
+// Cambiar propiedad: algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
+InterfaceMensajeEncriptacion bridge = BridgeFactory.createBridge();
+String mensaje = bridge.EncryptarMensaje("mensaje", "clave");  
+// Resultado: Mensaje encriptado con DES
+```
 
-✅ Construye el Bridge con la implementación seleccionada
+### Bridge sin Encriptación
+```
+// Cambiar propiedad: algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
+InterfaceMensajeEncriptacion bridge = BridgeFactory.createBridge();
+String mensaje = bridge.EncryptarMensaje("mensaje", "clave");
+// Resultado: Mensaje original sin cambios
+```
 
-✅ Encripta el mensaje usando el método configurado
+## 🔄 Cambio de Comportamiento
 
-## 🔄 Cambio de Algoritmo
-Para cambiar el algoritmo de encriptación, simplemente edita el archivo BridgeConfig.properties y modifica la línea:
+Para cambiar el algoritmo de encriptación, simplemente modifica el archivo de propiedades:
+```
+# Para usar AES
+algoritmoEncriptacion=encriptacion.ProcesoEncriptarAES
+
+# Para usar DES  
 algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
+
+# Para sin encriptación
+algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
+```
+
+## 🔐 Flujo de Ejecución
+
+1. Cliente solicita encriptación al Factory
+
+2. Factory lee configuración del archivo .properties
+
+3. Factory crea implementación específica (AES/DES/None)
+
+4. Factory construye Bridge con la implementación
+
+5. Bridge delega encriptación a la implementación concreta
+
+6. Cliente recibe mensaje encriptado sin conocer el algoritmo
+

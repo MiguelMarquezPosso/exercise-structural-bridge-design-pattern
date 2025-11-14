@@ -68,16 +68,16 @@ docker run parcialbridge
 ```
 
 ## 🎮 Uso
-El sistema automáticamente ejecuta pruebas que demuestran:
+El sistema automáticamente ejecuta pruebas que demuestran
 
-### Bridge con AES
+**Bridge con AES**:
 ```
 InterfaceMensajeEncriptacion bridge = BridgeFactory.createBridge();
 String mensaje = bridge.EncryptarMensaje("mensaje", "clave");
 // Resultado: Mensaje encriptado con AES
 ```
 
-### Bridge con DES
+**Bridge con DES**:
 ```
 // Cambiar propiedad: algoritmoEncriptacion=encriptacion.ProcesoEncriptarDES
 InterfaceMensajeEncriptacion bridge = BridgeFactory.createBridge();
@@ -85,7 +85,7 @@ String mensaje = bridge.EncryptarMensaje("mensaje", "clave");
 // Resultado: Mensaje encriptado con DES
 ```
 
-### Bridge sin Encriptación
+**Bridge sin Encriptación**:
 ```
 // Cambiar propiedad: algoritmoEncriptacion=encriptacion.ProcesoSinEncriptar
 InterfaceMensajeEncriptacion bridge = BridgeFactory.createBridge();
